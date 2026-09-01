@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c5bmydvyiqtso"]
+
+[ext_resource type="Material" uid="uid://dl1x1cljyu1qs" path="res://materials/wood.tres" id="1_yyefx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gd3vc"]
+size = Vector3(1, 0.8100281, 1)
+
+[node name="wooden_sign" type="Node3D" unique_id=1269864523]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2064625464]
+transform = Transform3D(1.1908094, 0, 0, 0, 0.83258265, 0, 0, 0, 0.075939484, 0, 0.98455966, 0)
+material_override = ExtResource("1_yyefx")
+mesh = SubResource("BoxMesh_gd3vc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=599377962]
+transform = Transform3D(0.09246461, 0, 0, 0, 0.8683158, 0, 0, 0, 0.075939484, 0, 0.29663867, 0)
+material_override = ExtResource("1_yyefx")
+mesh = SubResource("BoxMesh_gd3vc")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=313712541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0023544, 0.039704263)
+modulate = Color(0.08740675, 0.40311396, 0.73439705, 1)
+outline_modulate = Color(0.22986585, 0.036385957, 0.23243803, 1)
+text = "Finding Voice"
+outline_size = 4
