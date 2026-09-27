@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://sgta0ca45qbo"]
+
+[ext_resource type="PackedScene" uid="uid://hn886o6qioyg" path="res://glb files/chapter1/FV_Chair.glb" id="1_p54en"]
+
+[node name="FV_Chair" unique_id=783987683 instance=ExtResource("1_p54en")]

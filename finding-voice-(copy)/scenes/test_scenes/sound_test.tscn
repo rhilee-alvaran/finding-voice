@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cjsee0frykqc4"]
+
+[ext_resource type="Script" uid="uid://dqyh6bq37l5hm" path="res://scripts/test/sound_test.gd" id="1_q6m24"]
+[ext_resource type="AudioStream" uid="uid://dohmvy6wmmv7m" path="res://audio/20260918_021823.wav" id="2_kijgl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mti6b"]
+albedo_color = Color(0.6186689, 0.7113894, 0.7326848, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4kxuq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eoma2"]
+
+[node name="sound_test" type="Node3D" unique_id=1516522581]
+script = ExtResource("1_q6m24")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=662567353]
+transform = Transform3D(-2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_mti6b")
+mesh = SubResource("CapsuleMesh_4kxuq")
+
+[node name="sound" type="StaticBody3D" parent="MeshInstance3D" unique_id=161462014]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/sound" unique_id=919782551]
+shape = SubResource("CapsuleShape3D_eoma2")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=133702443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27897, 0)
+stream = ExtResource("2_kijgl")

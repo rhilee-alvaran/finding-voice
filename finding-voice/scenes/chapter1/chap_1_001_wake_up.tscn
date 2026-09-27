@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://bieva6opnl8bw"]
+
+[ext_resource type="PackedScene" uid="uid://cjsee0frykqc4" path="res://scenes/test_scenes/sound_test.tscn" id="1_j4g4i"]
+[ext_resource type="PackedScene" uid="uid://c2gcnsvt73bse" path="res://scenes/chapter1_asset_scenes/ch_1_house.tscn" id="1_syrtc"]
+[ext_resource type="PackedScene" uid="uid://bovn7a6nfvb68" path="res://scenes/trigger_cutscene.tscn" id="1_trp6f"]
+[ext_resource type="PackedScene" uid="uid://fvnm0t78wtxh" path="res://scenes/player.tscn" id="2_hos0t"]
+[ext_resource type="PackedScene" uid="uid://uc8hrdfv46qu" path="res://scenes/test_scenes/interact_test_object.tscn" id="3_7r16f"]
+[ext_resource type="PackedScene" uid="uid://sgta0ca45qbo" path="res://scenes/chapter1/chair.tscn" id="4_hhh3h"]
+[ext_resource type="PackedScene" uid="uid://dmudc0dqs75aw" path="res://scenes/chapter1/chap_1_000_dark_place.tscn" id="4_sje1y"]
+[ext_resource type="PackedScene" uid="uid://1h3wyxn34lyk" path="res://scenes/characters/father_2.tscn" id="7_s0dd2"]
+[ext_resource type="PackedScene" uid="uid://d2t0vncq43t3p" path="res://scenes/characters/mother_2.tscn" id="8_s0dd2"]
+
+[sub_resource type="Gradient" id="Gradient_hos0t"]
+offsets = PackedFloat32Array(0.23986487, 0.8344595, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.94693035, 0.77958965, 0, 1, 0.92646325, 0.78339255, 0.10259367, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7r16f"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j4g4i"]
+noise = SubResource("FastNoiseLite_7r16f")
+color_ramp = SubResource("Gradient_hos0t")
+seamless = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sje1y"]
+sky_top_color = Color(0.39430413, 0.47721797, 0.50310105, 1)
+sky_horizon_color = Color(0.77584803, 0.7136013, 0.56569725, 1)
+sky_cover = SubResource("NoiseTexture2D_j4g4i")
+ground_bottom_color = Color(0.4912235, 0.5454466, 0.47362489, 1)
+ground_horizon_color = Color(0.5744915, 0.6458584, 0.6134199, 1)
+
+[sub_resource type="Sky" id="Sky_trp6f"]
+sky_material = SubResource("ProceduralSkyMaterial_sje1y")
+
+[sub_resource type="Environment" id="Environment_j4g4i"]
+background_mode = 2
+sky = SubResource("Sky_trp6f")
+ambient_light_color = Color(0.5955663, 0.43879062, 0.24295205, 1)
+ambient_light_sky_contribution = 0.6
+ambient_light_energy = 1.6
+tonemap_mode = 2
+ssr_enabled = true
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.53
+glow_strength = 0.74
+glow_bloom = 1.0
+fog_light_color = Color(0.57963353, 0.5524684, 0.43064767, 1)
+fog_sky_affect = 0.85
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.9801944, 0.9531205, 0.83051914, 1)
+volumetric_fog_emission = Color(0.080783345, 0.080783345, 0.080783345, 1)
+volumetric_fog_length = 40.0
+volumetric_fog_ambient_inject = 0.5
+volumetric_fog_sky_affect = 0.5
+volumetric_fog_temporal_reprojection_amount = 0.99
+
+[node name="Chap1_001_WakeUp" type="Node3D" unique_id=73678181]
+
+[node name="parents_cutscene_camera" type="Camera3D" parent="." unique_id=1285375695]
+transform = Transform3D(0.74497515, 0.016772304, -0.66688126, -0.009742893, 0.9998508, 0.014262773, 0.66702104, -0.0041280687, 0.74502754, 8.773474, 2.2443, -13.339991)
+fov = 80.0
+
+[node name="trigger_cutscene" parent="." unique_id=353629931 node_paths=PackedStringArray("camera", "chair") instance=ExtResource("1_trp6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.70571, 1.9922078, -12.717088)
+camera = NodePath("../parents_cutscene_camera")
+chair = NodePath("../FV_CH1_HOUSE/FV_Chair")
+
+[node name="Timer" type="Timer" parent="trigger_cutscene" unique_id=1603072987]
+wait_time = 8.0
+one_shot = true
+
+[node name="sound_test" parent="." unique_id=1516522581 instance=ExtResource("1_j4g4i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.692835, 1.1836841, -7.697523)
+
+[node name="FV_CH1_HOUSE" parent="." unique_id=1843404835 instance=ExtResource("1_syrtc")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="FV_Chair" parent="FV_CH1_HOUSE" unique_id=783987683 instance=ExtResource("4_hhh3h")]
+transform = Transform3D(-1.1166884, 0, -2.347979, 0, 2.6, 0, 2.347979, 0, -1.1166884, 12.14835, 1.0668485, -21.123857)
+
+[node name="player" parent="." unique_id=231241839 instance=ExtResource("2_hos0t")]
+transform = Transform3D(0.8194686, 0, -0.5731239, 0, 1, 0, 0.5731239, 0, 0.8194686, -29.012058, 1.4878938, -16.173248)
+
+[node name="interact_test_object" parent="." unique_id=198873684 node_paths=PackedStringArray("player") instance=ExtResource("3_7r16f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.217466, 1.2639563, -1.763841)
+player = NodePath("../player")
+target_scene = ExtResource("4_sje1y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1269625733]
+transform = Transform3D(-0.9802908, 0.013853268, 0.19707406, 0.06644619, 0.9625443, 0.26285648, -0.1860511, 0.27077055, -0.94449365, 0, 2.8320653, 0)
+light_color = Color(0.8523514, 0.8099256, 0.66376466, 1)
+light_volumetric_fog_energy = 10.0
+shadow_enabled = true
+shadow_normal_bias = 10.0
+shadow_blur = 1.2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2086048582]
+environment = SubResource("Environment_j4g4i")
+
+[node name="Father2" parent="." unique_id=230724509 instance=ExtResource("7_s0dd2")]
+transform = Transform3D(-0.56461716, 0, -0.13269314, 0, 0.58, 0, 0.13269314, 0, -0.56461716, 9.592057, 0.5665307, -17.87709)
+visible = false
+
+[node name="mother2" parent="." unique_id=153335572 instance=ExtResource("8_s0dd2")]
+transform = Transform3D(0.5799779, 0, 0.0050676395, 0, 0.58000004, 0, -0.0050676395, 0, 0.5799779, 12.731323, 0.48795402, -15.604415)
+visible = false
+
+[connection signal="timeout" from="trigger_cutscene/Timer" to="trigger_cutscene" method="_on_timer_timeout"]

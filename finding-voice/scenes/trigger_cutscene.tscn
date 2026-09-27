@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bovn7a6nfvb68"]
+
+[ext_resource type="Script" uid="uid://b1d7r8w7wia4l" path="res://scripts/chapter1/trigger_cutscene.gd" id="1_hy84j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
+size = Vector3(3.649414, 4.37381, 1)
+
+[node name="trigger_cutscene" type="Area3D" unique_id=353629931]
+script = ExtResource("1_hy84j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1213724562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010253906, 0.72532654, 0)
+shape = SubResource("BoxShape3D_4kxuq")
+debug_color = Color(1, 0, 1, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

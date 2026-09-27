@@ -1,0 +1,8 @@
+res://scenes/chapter1/chap_1_001_wake_up.tscn
+res://shaders/player.gdshader
+res://shaders/shader.gdshader
+res://scripts/chapter1/trigger_cutscene.gd
+res://scenes/test_scenes/orb.tscn
+res://scripts/orb.gd
+res://scenes/chapter1/table_animation.tscn
+res://ui/ui_scripts/cutscene_ui.gd

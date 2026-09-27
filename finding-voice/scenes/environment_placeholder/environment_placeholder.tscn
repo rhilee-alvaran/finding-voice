@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cnyn6d1dm373s"]
+
+[sub_resource type="Gradient" id="Gradient_3kgjm"]
+offsets = PackedFloat32Array(0.23986487, 0.8344595, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.94693035, 0.77958965, 0, 1, 0.92646325, 0.78339255, 0.10259367, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yob0q"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bcbe7"]
+noise = SubResource("FastNoiseLite_yob0q")
+color_ramp = SubResource("Gradient_3kgjm")
+seamless = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ox0js"]
+sky_top_color = Color(0.39430413, 0.47721797, 0.50310105, 1)
+sky_horizon_color = Color(0.77584803, 0.7136013, 0.56569725, 1)
+sky_cover = SubResource("NoiseTexture2D_bcbe7")
+ground_bottom_color = Color(0.4912235, 0.5454466, 0.47362489, 1)
+ground_horizon_color = Color(0.5744915, 0.6458584, 0.6134199, 1)
+
+[sub_resource type="Sky" id="Sky_4jmdl"]
+sky_material = SubResource("ProceduralSkyMaterial_ox0js")
+
+[sub_resource type="Environment" id="Environment_pbvs4"]
+background_mode = 2
+sky = SubResource("Sky_4jmdl")
+glow_enabled = true
+
+[node name="environment_placeholder" type="Node3D" unique_id=1585281078]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1264658425]
+environment = SubResource("Environment_pbvs4")

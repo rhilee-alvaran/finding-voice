@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://uc8hrdfv46qu"]
+
+[ext_resource type="Script" uid="uid://psabs2yvc6ym" path="res://scripts/test/interact_test_object.gd" id="1_v16pw"]
+[ext_resource type="Texture2D" uid="uid://yctndua2aiw5" path="res://textures/materials_texture/wood.jpg" id="2_egiud"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mti6b"]
+albedo_color = Color(0.2789908, 0.27899083, 0.27899083, 1)
+albedo_texture = ExtResource("2_egiud")
+metallic_specular = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_4kxuq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
+
+[node name="interact_test_object" type="Node3D" unique_id=198873684]
+script = ExtResource("1_v16pw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1901530615]
+material_override = SubResource("StandardMaterial3D_mti6b")
+mesh = SubResource("BoxMesh_4kxuq")
+
+[node name="test" type="StaticBody3D" parent="MeshInstance3D" unique_id=695281182]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/test" unique_id=1252642202]
+shape = SubResource("BoxShape3D_4kxuq")

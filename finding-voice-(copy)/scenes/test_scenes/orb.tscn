@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://b8aci6n1638yp"]
+
+[ext_resource type="Texture2D" uid="uid://dgka75o2url36" path="res://glb files/chapter1/FV_CH1_HOUSE_Metal.jpg" id="1_37qgf"]
+[ext_resource type="Script" uid="uid://dn0xvp3lpvt6d" path="res://scripts/orb.gd" id="1_jsndq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37qgf"]
+albedo_color = Color(0.27660748, 0.37040636, 0.87812096, 1)
+emission_enabled = true
+emission = Color(0.59040296, 0.71111023, 1, 1)
+emission_energy_multiplier = 13.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_jsndq"]
+material = SubResource("StandardMaterial3D_37qgf")
+rings = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxb74"]
+albedo_color = Color(0.27660748, 0.37040636, 0.87812096, 1)
+emission_enabled = true
+emission = Color(0.20868957, 0.37807214, 1, 1)
+emission_energy_multiplier = 13.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_65xwo"]
+material = SubResource("StandardMaterial3D_dxb74")
+rings = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm1bc"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("1_37qgf")
+emission_enabled = true
+emission = Color(0.5793025, 0.68614316, 0.9174852, 1)
+emission_energy_multiplier = 0.35
+refraction_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_mti6b"]
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37hiq"]
+albedo_texture = ExtResource("1_37qgf")
+emission_enabled = true
+emission = Color(0.5793025, 0.68614316, 0.9174852, 1)
+emission_energy_multiplier = 16.0
+refraction_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4kxuq"]
+radius = 0.829456
+
+[node name="voice_orb" type="Node3D" unique_id=1229232740]
+script = ExtResource("1_jsndq")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=463005251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016466022, 0.59052235, -0.06814021)
+amount = 5
+lifetime = 0.7
+randomness = 0.38
+mesh = SubResource("SphereMesh_jsndq")
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 5, 0)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="." unique_id=1816973407]
+transform = Transform3D(0.9558842, 0, 0, 0, 1, 0, 0, 0, 1, -0.016466022, 0.59052235, -0.06814021)
+amount = 5
+lifetime = 0.7
+randomness = 0.38
+mesh = SubResource("SphereMesh_65xwo")
+emission_shape = 1
+emission_sphere_radius = 1.5
+gravity = Vector3(0, 5, 0)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1156075914]
+material_override = SubResource("StandardMaterial3D_mm1bc")
+mesh = SubResource("SphereMesh_mti6b")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=259379164]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_37hiq")
+mesh = SubResource("SphereMesh_mti6b")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1104736960]
+light_color = Color(0.7768073, 0.87516177, 0.9932179, 1)
+light_energy = 4.23
+omni_range = 5.8374834
+
+[node name="Area3D" type="Area3D" parent="." unique_id=653974017]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=56838240]
+shape = SubResource("SphereShape3D_4kxuq")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://q5rdjryc4qkw"]
+
+[ext_resource type="Script" uid="uid://cxeimw81leaw6" path="res://ui/ui_scripts/cutscene_ui.gd" id="1_rxyb6"]
+
+[node name="cutscene_ui" type="CanvasLayer" unique_id=407005182]
+script = ExtResource("1_rxyb6")
+
+[node name="top_block" type="ColorRect" parent="." unique_id=1623796767]
+offset_top = -200.0
+offset_right = 1152.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
+[node name="bottom_block" type="ColorRect" parent="." unique_id=1778726134]
+offset_top = 550.0
+offset_right = 1152.0
+offset_bottom = 850.0
+color = Color(0, 0, 0, 1)

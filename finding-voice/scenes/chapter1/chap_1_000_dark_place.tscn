@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dmudc0dqs75aw"]
+
+[ext_resource type="PackedScene" uid="uid://b76un2fjl8m0o" path="res://scenes/chapter1_asset_scenes/ch_1_house_dark.tscn" id="1_afyf1"]
+[ext_resource type="PackedScene" uid="uid://b8aci6n1638yp" path="res://scenes/test_scenes/orb.tscn" id="1_gwh2d"]
+[ext_resource type="PackedScene" uid="uid://fvnm0t78wtxh" path="res://scenes/player.tscn" id="2_p71iq"]
+
+[sub_resource type="Gradient" id="Gradient_p71iq"]
+offsets = PackedFloat32Array(0.23986487, 0.8344595, 1)
+colors = PackedColorArray(0, 0, 0, 1, 6.317161e-08, 0.080639176, 0.10661272, 1, 0, 0.09957639, 0.18029168, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gwh2d"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bcbe7"]
+noise = SubResource("FastNoiseLite_gwh2d")
+color_ramp = SubResource("Gradient_p71iq")
+seamless = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x1mou"]
+sky_top_color = Color(0.0058935382, 0.020844448, 0.19294226, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_cover = SubResource("NoiseTexture2D_bcbe7")
+ground_bottom_color = Color(0.0059678624, 0.010882772, 0.11186231, 1)
+ground_horizon_color = Color(6.3545376e-05, 0.007597278, 0.023656996, 1)
+
+[sub_resource type="Sky" id="Sky_4jmdl"]
+sky_material = SubResource("ProceduralSkyMaterial_x1mou")
+
+[sub_resource type="Environment" id="Environment_gdq00"]
+background_mode = 2
+sky = SubResource("Sky_4jmdl")
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 1.0
+fog_enabled = true
+fog_light_energy = 0.4
+fog_aerial_perspective = 0.905
+fog_sky_affect = 0.0
+volumetric_fog_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=1952755596]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1706536911]
+transform = Transform3D(1, 0, 0, 0, -0.9545247, 0.29813182, 0, -0.29813182, -0.9545247, 13.735539, 3.0623248, -17.0023)
+light_energy = 2.587
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 1.508
+shadow_enabled = true
+shadow_normal_bias = 10.0
+shadow_blur = 1.56
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2049150714]
+environment = SubResource("Environment_gdq00")
+
+[node name="Node3D" parent="WorldEnvironment" unique_id=1229232740 instance=ExtResource("1_gwh2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9214413, 1.5556505, -11.085322)
+
+[node name="FV_CH1_HOUSE" parent="." unique_id=1843404835 instance=ExtResource("1_afyf1")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.0060817003, 0.010349393, 0.005988121)
+
+[node name="player" parent="." unique_id=231241839 instance=ExtResource("2_p71iq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.735539, 1.6938562, -14.940935)

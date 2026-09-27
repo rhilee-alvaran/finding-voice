@@ -1,0 +1,15 @@
+Timer
+VideoStreamPlayer
+TextureRect
+Control
+CollisionShape3D
+Area3D
+DirectionalLight3D
+CanvasLayer
+Camera3D
+MeshInstance3D
+OmniLight3D
+GPUParticles3D
+CPUParticles3D
+CSGBox3D
+AudioStreamPlayer3D
